@@ -6,22 +6,18 @@ namespace Lab06
 {
     public partial class frmXuat : Form
     {
-        // Automatic Property
         public int SoDong { get; set; }
         public int SoCot { get; set; }
 
-        // Field
         int h = 35, margin = 5;
 
         public frmXuat(int dong = 1, int cot = 1)
         {
-            InitializeComponent(); // khởi tạo Form & control
+            InitializeComponent();
 
-            // Gán số dòng, số cột
             this.SoDong = dong;
             this.SoCot = cot;
 
-            // Thêm các control vào form
             Button btn = null;
             for (int i = 0; i < SoDong; i++)
             {
@@ -32,7 +28,7 @@ namespace Lab06
                     btn.Text = (i * SoCot + j + 1).ToString();
                     btn.Left = margin * (j + 1) + h * j;
                     btn.Top = margin * (i + 1) + h * i;
-                    // gán sự kiện cho button
+
                     btn.Click += btn_Click;
                     btn.MouseHover += HoChuotLenButton;
                     btn.Tag = string.Format("Dòng {0} cột {1}", i, j);
@@ -40,7 +36,6 @@ namespace Lab06
                 }
             }
 
-            // chỉnh lại kích thước form
             this.ClientSize = new Size(SoCot * (h + margin + 1), SoDong * (h + margin + 1));
         }
 
